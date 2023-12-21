@@ -15,7 +15,7 @@ public class ProbandoJavaDoc {
 
 
         //Implementamos el metodo
-        conversionAMoneda(3966.25,tipoMoneda);
+        conversionAMoneda(4000,tipoMoneda);
 
     }
 
