@@ -8,6 +8,10 @@ public class Main {
 
         Menu.primerMenu();
 
+        Patient patient = new Patient("Walter","walterm2000011@gmail.com");
+
+        System.out.println("El nombre del paciente registrado es : "+ patient.name);
+
 
        /* Doctor doctor = new Doctor("Walter ", "Backend Developer");
         System.out.println(doctor.toString()) ;
