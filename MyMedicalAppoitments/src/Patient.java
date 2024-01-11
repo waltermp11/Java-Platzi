@@ -1,7 +1,7 @@
 public class Patient {
 
-      private String name;
-     private String email;
+    private String name;
+    private String email;
     private String address;
     private String number;
     private String birthday;
@@ -55,12 +55,13 @@ public class Patient {
         this.birthday = birthday;
     }
 
-    public double getWeight() {
-        return weight;
+    public String getWeight() {
+        return weight+" Kg";
     }
 
     public void setWeight(double weight) {
         this.weight = weight;
+
     }
 
     public double getHeight() {
