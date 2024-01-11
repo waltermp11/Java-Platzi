@@ -1,9 +1,11 @@
+import UI.User;
+
 import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor {
-    private String nombre;
+public class Doctor extends User {
+
     private static int id = 999; // Para las incrementaciones en los atributos lo que hacemos es ponerla static, no solo privado! ✅✅
     private String speciality;
     private int id_availableAppointment;
@@ -11,32 +13,23 @@ public class Doctor {
     private Date date; // fecha de disponible del doctor
     private String time;
 
-    private String email;
-    private String address;
-
-
-    public Doctor(String nombre, String speciality) {
-        this.nombre = nombre;
+    public Doctor(String name, String email, String speciality, int id_availableAppointment, Date date, String time) {
+        super(name, email);
         this.speciality = speciality;
-        id++;
+        this.id_availableAppointment = id_availableAppointment;
+        this.date = date;
+        this.time = time;
     }
 
-    public void mostrarNombre() {
-        System.out.println("El nombre del doctor es : " + nombre);
-    }
 
     @Override
     public String toString() {
         return "Creando un Doctor 🧑🏻‍⚕️\n " +
-                "nombre: " + nombre + "\n" +
+                "nombre: " + getName() + "\n" +
                 " id: " + id + "\n" +
                 "speciality: " + speciality + '\n';
     }
 
-    public void showIdDoctor() {
-
-        System.out.println("El Id del doctor es : " + id);
-    }
 
     //Creamos una arrayList -- collecction para almacenar los las citas que nosotros consigamos.
 

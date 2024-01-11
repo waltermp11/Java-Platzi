@@ -1,51 +1,23 @@
-public class Patient {
+import UI.User;
 
-    private String name;
-    private String email;
-    private String address;
-    private String number;
+public class Patient extends User {
+
+
     private String birthday;
     private double weight;
     private double height;
     private String blood;
 
 
-    public Patient(String name, String email) {
-        this.name = name;
-        this.email = email;
+    public Patient(String name, String email, String birthday, double weight, double height, String blood) {
+        super(name, email);
+        this.birthday = birthday;
+        this.weight = weight;
+        this.height = height;
+        this.blood = blood;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
 
     public String getBirthday() {
         return birthday;
