@@ -1,4 +1,4 @@
-import UI.User;
+package Model;
 
 public class Patient extends User {
 
@@ -9,6 +9,10 @@ public class Patient extends User {
     private String blood;
 
 
+    public Patient(String name, String email) {
+        super(name, email);
+    }
+
     public Patient(String name, String email, String birthday, double weight, double height, String blood) {
         super(name, email);
         this.birthday = birthday;
@@ -17,7 +21,12 @@ public class Patient extends User {
         this.blood = blood;
     }
 
+    @Override
+    public void showDataUser() {
+        System.out.println("Paciente");
+        System.out.println("Historia Clinica del Paciente ...");
 
+    }
 
     public String getBirthday() {
         return birthday;

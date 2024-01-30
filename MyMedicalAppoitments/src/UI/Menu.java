@@ -1,8 +1,15 @@
 package UI;
 
+import Model.Doctor;
+import Model.Patient;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
+
+    public static Doctor doctorlogueado;
+    public static Patient pacienteLogueado;
 
 
     public static int primerMenu() {
@@ -10,10 +17,7 @@ public class Menu {
 
         int response1 = 0;
         do {
-            System.out.println("Escoja el tipo de Usuario : \n" +
-                    "1. Doctor\n" +
-                    "2. Patient\n" +
-                    "3. Salir");
+            System.out.println("Escoja el tipo de Usuario : \n" + "1. Doctor\n" + "2. Patient\n" + "3. Salir");
             Scanner scanner = new Scanner(System.in);
             response1 = Integer.valueOf(scanner.nextLine());
 
@@ -21,19 +25,22 @@ public class Menu {
 
                 case 1:
                     System.out.println("Escogiste la Opcion doctor");
-                    menuDoctor();
+                    autentificarUsuario(1);
                     break;
 
                 case 2:
                     System.out.println("Escogiste la opcion de Paciente");
-                    menuPaciente();
+                    autentificarUsuario(2);
+                    break;
+
+                default:
+                    System.out.println("No tenemos esa opcion seleccionada , solo 1 y 2 ❌❌❌❌");
                     break;
 
 
             }
 
-        }
-        while (response1 != 3);
+        } while (response1 != 3);
 
 
         return response1;
@@ -44,17 +51,12 @@ public class Menu {
     public static void menuDoctor() {
         int response2 = 0;
         do {
-            System.out.println("Menu de Doctor 👨🏻‍⚕️🧑🏻‍⚕️🏥🩺🩻:\n" +
-                    "1. Crear ✅\n" +
-                    "2. Modificar ▶️\n" +
-                    "3. Elimnar ❌\n" +
-                    "4. Salida ⬅️");
+            System.out.println("Menu de Doctor 👨🏻‍⚕️🧑🏻‍⚕️🏥🩺🩻:\n" + "1. Crear ✅\n" + "2. Modificar ▶️\n" + "3. Elimnar ❌\n" + "4. Salida ⬅️");
 
             System.out.println("Escoja  una de las opciones ✅ : ");
             Scanner scanner = new Scanner(System.in);
             response2 = Integer.valueOf(scanner.nextLine());
-        }
-        while (response2 != 4);
+        } while (response2 != 4);
 
 
     }
@@ -71,14 +73,10 @@ public class Menu {
         System.out.println("Este es el menu de paciente 👶🏻👩🏻‍🦰🧓🏻🧑🏻 ");
         int response3 = 0;
         do {
-            System.out.println("Menu de Doctor:\n" +
-                    "1. Consultar citas\n" +
-                    "2. Resultados\n" +
-                    "3. Ortodoncia\n" +
-                    "4. Volver al menu Principal ⬅️\n");
+            System.out.println("Menu de Doctor:\n" + "1. Consultar citas\n" + "2. Resultados\n" + "3. Ortodoncia\n" + "4. Volver al menu Principal ⬅️\n");
 
             Scanner scanner = new Scanner(System.in);
-            response3 = Integer.valueOf(scanner.nextLine());
+            response3 = scanner.nextInt();
 
             switch (response3) {
                 case 1:
@@ -86,8 +84,7 @@ public class Menu {
                     break;
 
                 case 2:
-                    System.out.println("Estos son los resultados  \n" +
-                            "RESULTADOS 📚📚📚📚");
+                    System.out.println("Estos son los resultados  \n" + "RESULTADOS 📚📚📚📚");
                     break;
                 case 3:
                     System.out.println("Esta es la ortodoncia 🦷🦷");
@@ -102,8 +99,7 @@ public class Menu {
                     break;
 
             }
-        }
-        while (response3 != 4);
+        } while (response3 != 4);
     }
 
 
@@ -116,10 +112,9 @@ public class Menu {
         Scanner scanner1 = new Scanner(System.in);
         mesRepuesta = Integer.valueOf(scanner1.nextLine());
 
-        switch (mesRepuesta){
-            case   1:
-                System.out.println("Escogiste el mes de Enero 📅📅📅\n" +
-                        "Agendamos tu cita para el enero");
+        switch (mesRepuesta) {
+            case 1:
+                System.out.println("Escogiste el mes de Enero 📅📅📅\n" + "Agendamos tu cita para el enero");
                 break;
 
             case 2:
@@ -135,7 +130,62 @@ public class Menu {
         }
 
 
+    }
 
+
+    private static void autentificarUsuario(int tipoDeUsuario) {
+        //Tipo de usuario 1 = usuario
+        //tipo de usuario 2 = paciente
+
+
+        ArrayList<Doctor> doctors = new ArrayList<>();
+        doctors.add(new Doctor("Walter", "walterm200011@gmail.com"));
+        doctors.add(new Doctor("Jesus", "Jesus@gmail.com"));
+        doctors.add(new Doctor("Alberto", "alberto@gmail.com"));
+
+
+        ArrayList<Patient> pacientes = new ArrayList<>();
+        pacientes.add(new Patient("Manuela Rojas", "manuela@mail.com"));
+        pacientes.add(new Patient("Valentina ", "valentina@mail.com"));
+        pacientes.add(new Patient("Andres Valencia ", "Andres@mail.com"));
+
+
+        boolean emailCorrecto = false;
+
+        do {
+            System.out.println("Ingrese su email : [name@mail.com]");
+            Scanner scanner = new Scanner(System.in); //Usamos el scanner para almacenar lo que tiene el usuario
+            String email = scanner.nextLine();
+
+
+            if (tipoDeUsuario == 1) {
+                for (Doctor d : doctors) {
+                    if (d.getEmail().equals(email)) {
+
+                        emailCorrecto = true;
+                        doctorlogueado = d;
+                        System.out.println(doctorlogueado);
+                        //mostrar el menu del doctor
+                        menuDoctor();
+
+                    }
+                }
+
+            }
+            if (tipoDeUsuario == 2) {
+                for (Patient p : pacientes) {
+
+                    if (p.getEmail().equals(email)) {
+                        emailCorrecto = true;
+                        pacienteLogueado = p;
+                        System.out.println(pacienteLogueado);
+                        menuPaciente();
+                    }
+                }
+
+
+            }
+        } while (!emailCorrecto); // si es diferente de false
     }
 }
 

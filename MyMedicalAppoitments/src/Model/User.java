@@ -1,6 +1,6 @@
-package UI;
+package Model;
 
-public class User { //Clase Padre
+public abstract class User { //Clase Padre
 
     private String name;
     private String email;
@@ -11,6 +11,18 @@ public class User { //Clase Padre
     public User(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public abstract void showDataUser ();
+
+
+    @Override
+    public String toString() {
+        return
+                "name='" + name + '\'' +
+                        ", email='" + email + '\'' +
+                        ", address='" + address + '\'' +
+                        ", number='" + number ;
     }
 
     public String getName() {
@@ -42,12 +54,12 @@ public class User { //Clase Padre
     }
 
     public void setNumber(String number) {
-        if (number.length()==8) {
+        if (number.length() == 8) {
 
             System.out.println("Se guardo el numero correctamente ✅✅ \n" +
                     number);
 
-        }else {
+        } else {
             System.out.println("No cumple con los 8 digitos asignados ❌❌");
         }
         this.number = number;

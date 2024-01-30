@@ -1,6 +1,5 @@
-import UI.User;
+package Model;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,29 +12,17 @@ public class Doctor extends User {
     private Date date; // fecha de disponible del doctor
     private String time;
 
-    public Doctor(String name, String email, String speciality, int id_availableAppointment, Date date, String time) {
+    public Doctor(String name, String email) {
         super(name, email);
-        this.speciality = speciality;
-        this.id_availableAppointment = id_availableAppointment;
-        this.date = date;
-        this.time = time;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Creando un Doctor 🧑🏻‍⚕️\n " +
-                "nombre: " + getName() + "\n" +
-                " id: " + id + "\n" +
-                "speciality: " + speciality + '\n';
     }
 
 
     //Creamos una arrayList -- collecction para almacenar los las citas que nosotros consigamos.
 
     ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
-    public void addAvailableAppointment (Date date, String time) { // este metodo es para agregar appointments.
-        availableAppointments.add(new AvailableAppointment(time,date));
+
+    public void addAvailableAppointment(Date date, String time) { // este metodo es para agregar appointments.
+        availableAppointments.add(new AvailableAppointment(time, date));
     }
 
     public ArrayList<AvailableAppointment> getAvailableAppointments() {
@@ -48,9 +35,9 @@ public class Doctor extends User {
     public static class AvailableAppointment {
 
 
-         private String time;
+        private String time;
         private int id;
-         private Date date;
+        private Date date;
 
         public AvailableAppointment(String time, Date date) {
             this.time = time;
@@ -74,7 +61,26 @@ public class Doctor extends User {
         }
     }
 
-    // Atributos
+    @Override
+    public void showDataUser() {
+        System.out.println("Doctor \n" +
+                "Departamento  : Pediatria \n" +
+                "Estado --> Disponible ✅✅");
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "speciality='" + speciality + '\'' +
+                ", id_availableAppointment=" + id_availableAppointment;
+    }
+
+    public void mostrarArray() {
+        for (Doctor.AvailableAppointment aA : getAvailableAppointments()) {
+            System.out.println(aA.getDate() + " " + aA.getTime());
+        }
+
+        // Atributos
      /*static int id = 1000; //Este se tiene que autoincrementar
     String name;
     String speciality;
@@ -100,4 +106,5 @@ public class Doctor extends User {
     }*/
 
 
+    }
 }
