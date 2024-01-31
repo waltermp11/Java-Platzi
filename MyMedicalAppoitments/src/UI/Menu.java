@@ -16,6 +16,7 @@ public class Menu {
         System.out.println("Bienvendio a WalterSura 🧑🏻‍⚕️🧑🏻‍⚕️");
 
         int response1 = 0;
+        boolean state= false;
         do {
             System.out.println("Escoja el tipo de Usuario : \n" + "1. Doctor\n" + "2. Patient\n" + "3. Salir");
             Scanner scanner = new Scanner(System.in);
@@ -26,21 +27,24 @@ public class Menu {
                 case 1:
                     System.out.println("Escogiste la Opcion doctor");
                     autentificarUsuario(1);
+                    state=true;
                     break;
 
                 case 2:
                     System.out.println("Escogiste la opcion de Paciente");
                     autentificarUsuario(2);
+                    state=true;
                     break;
 
                 default:
                     System.out.println("No tenemos esa opcion seleccionada , solo 1 y 2 ❌❌❌❌");
+                    state=false;
                     break;
 
 
             }
 
-        } while (response1 != 3);
+        } while (state==false);
 
 
         return response1;
