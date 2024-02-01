@@ -53,6 +53,10 @@ public class Menu {
 
     //******************************Metodo de Doctor
     public static void menuDoctor() {
+
+        UIDoctorMenu.showDoctorMenu();
+
+        /*
         int response2 = 0;
         do {
             System.out.println("Menu de Doctor 👨🏻‍⚕️🧑🏻‍⚕️🏥🩺🩻:\n" + "1. Crear ✅\n" + "2. Modificar ▶️\n" + "3. Elimnar ❌\n" + "4. Salida ⬅️");
@@ -61,13 +65,15 @@ public class Menu {
             Scanner scanner = new Scanner(System.in);
             response2 = Integer.valueOf(scanner.nextLine());
         } while (response2 != 4);
-
+*/
 
     }
 
+
+
     //**********************MONTHS*************************************
 
-    public static String MONTHS[] = {"MONTHS 📅📅", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+    public static final String MONTHS[] = {"MONTHS 📅📅", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
 
     //*************************Metodo Paciente **********************
 
